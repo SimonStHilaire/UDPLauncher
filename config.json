@@ -1,0 +1,10 @@
+{
+    "port": 8082,
+    "commands":
+    [
+        {
+            "msg": "notepad",
+            "cmd": "c:\\windows\\notepad.exe"
+        }
+    ]
+}
