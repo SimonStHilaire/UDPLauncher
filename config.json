@@ -1,10 +1,11 @@
 {
-    "port": 8082,
+    "port": 8083,
     "commands":
     [
         {
             "msg": "notepad",
-            "cmd": "c:\\windows\\notepad.exe"
+            "cmd": "c:\\windows\\notepad.exe",
+            "delay": 5.0
         }
     ]
 }

@@ -17,6 +17,7 @@ public class Launcher : MonoBehaviour
     {
         public string msg;
         public string cmd;
+        public float delay = 0;
     }
 
     [Serializable]
@@ -53,12 +54,25 @@ public class Launcher : MonoBehaviour
         {
             if(cmdData.msg == message)
             {
-                RunCommand(cmdData.cmd);
+                if (cmdData.delay > 0f)
+                    StartCoroutine(RunCommandDelayed(cmdData.cmd, cmdData.delay));
+                else
+                    RunCommand(cmdData.cmd);
+
                 return;
             }    
         }
 
         AddLog($"Aucune commande pour le message");
+    }
+
+    IEnumerator RunCommandDelayed(string cmd, float delay)
+    {
+        AddLog($"La commande {cmd} sera exécutée dans {delay} secondes");
+
+        yield return new WaitForSeconds(delay);
+
+        RunCommand(cmd);
     }
 
     void RunCommand(string command)
